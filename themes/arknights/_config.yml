@@ -42,8 +42,8 @@ mermaid: false
 # main menu navigation
 menu:
   Home: ''
-#  About: about/
-#  Contact: contact/
+  About: about/
+  Contact: contact/
   Archives: archives/
 
 # stylesheets loaded in the <head>
