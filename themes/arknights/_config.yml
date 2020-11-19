@@ -12,7 +12,7 @@ aside:
   block_in_top: false # 目前为侧边栏文章目录置顶
   copyright: # 版权声明、备案号等
     ©: 1970 to 2020
-    ICP: ——备案号——
+    Email: jimmy_ysy@163.com
 
 # post 文章页面配置；true / false
 post:
@@ -33,8 +33,8 @@ archives:
 
 # Valine 无后端评论系统
 valine:
-  app_id: # <APP ID>
-  app_key: # <APP KEY>
+  app_id: VfeDa28uYE7JCwY3svsNUAtX-gzGzoHsz # <APP ID>
+  app_key: KHAP6sqzLBJo9mbINB2jVk79 # <APP KEY>
 
 # 图表支持
 mermaid: false
