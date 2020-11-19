@@ -43,7 +43,7 @@ mermaid: false
 menu:
   Home: ''
   About: about/
-  Contact: contact/
+  # Contact: contact/
   Archives: archives/
 
 # stylesheets loaded in the <head>
