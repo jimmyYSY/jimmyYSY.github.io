@@ -12,6 +12,7 @@ tags:
 
 ## 准备工作
 
+- 注： 本教程针对用户为Windows系统
 - 下载并安装[node](https://nodejs.org/zh-cn/)  以便使用npm，注：node版本需10.13.0以上
 - 推荐使用[nvm](https://github.com/coreybutler/nvm-windows/releases) 安装,nvm为node版本管理器，可同时在一台机器上存在多个node版本
 - 下载安装[yarn](https://yarn.bootcss.com/)
@@ -68,7 +69,7 @@ hexo s
 
 ## 结语
 
-至此，hexo已经可以正常使用了，下一章节介绍如果在GitHub上使用github.io配合hexo建站访问。
+至此，hexo已经可以正常使用了，下一章节介绍如何在GitHub上使用github.io配合hexo建站访问。
 本篇主要需要注意的内容有
 
 1. 注意node版本，最低需要10.13.0以上
