@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>css3 动效库 | 易梦的技术生活</title><script src="https://cdn.bootcss.com/valine/1.4.4/Valine.min.js"></script><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><meta name="generator" content="Hexo 5.2.0"></head><body><header><nav><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a></nav></header><main><article><div id="post-bg"><div id="post-title"><div id="post-info"><span>date:<time datetime="2020-11-20T17:11:20.000Z" id="date"> 2020-11-20</time></span><br><span>updated:<time datetime="2020-11-20T10:19:01.081Z" id="updated"> 2020-11-20</time></span></div><h1>css3 动效库</h1><hr></div><div id="post-content"><h2 id="Animate-css"><a href="#Animate-css" class="headerlink" title="Animate.css"></a><a target="_blank" rel="noopener" href="https://animate.style/">Animate.css</a></h2><p><img src="/2020/11/20/css3Tools/animate.png" alt="animate"></p>
+<ul>
+<li><p>Animate.css是我比较喜欢的一个CSS3动效库，非常适合那些对CSS3动画效果不熟悉，但又希望给自己所做的网站或基于H5的APP引入动效的朋友。因为，你只需要给需要实现动效的元素添加上Animate.css中预定义的那些动效名称就可以了。比如常见的：bounce，flash，fadeIn，fadeOut等等，加起来有90种以上不同的动效，完全能够满足你的基本需要了。</p>
+</li>
+<li><p>当然对于这个库也有一些使用注意事项，比如你最好在给元素添加动效样式完成动效后，马上将这个动效样式去掉。另外，对于动效的时长，振动幅度等，你也需要做一些调整。因为，我感觉它默认设置中的动效过于快速和强烈了。Animate.css已经提供了详细的文档告诉你应该如何做这些调整。</p>
+</li>
+<li><p>并且这个库支持多种使用方式</p>
+</li>
+<li><p>使用npm安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install animate.css --save<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>使用yarn安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yarn add animate.css<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>页面内联连接</p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs HTML"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">link</span></span><br><span class="hljs-tag">    <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css&quot;</span></span><br><span class="hljs-tag">/&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Bounce-js"><a href="#Bounce-js" class="headerlink" title="Bounce.js"></a><a target="_blank" rel="noopener" href="http://bouncejs.com/">Bounce.js</a></h2><p><img src="/2020/11/20/css3Tools/bounce.png" alt="bounce"></p>
+<p>Bounce.js是一个能够生成CSS3动效的小工具，它是用JavaScript编写的，提供了一个Web界面，你可以添加一个组件然后就可以选择包括Scale，Translate，Rotate，Skew这些动效类型，然后分别设置它们的参数，当达到你想要的效果后，你可以将这个动效以CSS的方式导出，这样你就可以将它应用到你的应用中了。</p>
+<h2 id="CSS3-Animation"><a href="#CSS3-Animation" class="headerlink" title="CSS3 Animation"></a><a target="_blank" rel="noopener" href="https://www.minimamente.com/project/magic/">CSS3 Animation</a></h2><p><img src="/2020/11/20/css3Tools/css3Animation.png" alt="css3Animation"></p>
+<p>CSS3 Animation是一个非常简单易用的动效工具，目前GitHub start数量6.7k，目前提供70多种不同的特效效果，包括但不限于闪烁提示等，具体样式可点击标题进入官网查看。</p>
+<h2 id="AniJS"><a href="#AniJS" class="headerlink" title="AniJS"></a><a target="_blank" rel="noopener" href="http://anijs.github.io/">AniJS</a></h2><p><img src="/2020/11/20/css3Tools/Anijs.png" alt="anijs"></p>
+<p>AniJS是一个通过JavaScript控制的动效库。它允许你通过它的链式语法来定义动效。</p>
+<h2 id="Single-Element-CSS-Spinners"><a href="#Single-Element-CSS-Spinners" class="headerlink" title="Single Element CSS Spinners"></a><a target="_blank" rel="noopener" href="https://projects.lukehaas.me/css-loaders/">Single Element CSS Spinners</a></h2><p><img src="/2020/11/20/css3Tools/spinners.png" alt="spinners"></p>
+<p>我们经常会需要一些动效来表达系统处于加载或处理数据的过程中。Single Element CSS Spinners这个在GitHub上的项目，提供了一组非常漂亮的可用于加载的CSS3动效。</p>
+<h2 id="Snabbt-js"><a href="#Snabbt-js" class="headerlink" title="Snabbt.js"></a><a target="_blank" rel="noopener" href="http://daniel-lundin.github.io/snabbt.js/">Snabbt.js</a></h2><p><img src="/2020/11/20/css3Tools/snabbt.png" alt="snabbt"></p>
+<p>Sanbbt.js是一个很不错并且精致的动效库，可以被用在移动应用中。而且它也支持链式语法，你可以很方便地写出复杂的动效组合。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javaScript">snabbt(element, &#123;<br>  position: [<span class="hljs-number">100</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>  easing: <span class="hljs-string">&#x27;ease&#x27;</span><br>&#125;).snabbt(&#123;<br>  fromRotation: [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">2</span>*<span class="hljs-built_in">Math</span>.PI],<br>  position: [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>  easing: <span class="hljs-string">&#x27;spring&#x27;</span>,<br>  springConstant: <span class="hljs-number">0.2</span>,<br>  springDeceleration: <span class="hljs-number">0.90</span>,<br>  springMass: <span class="hljs-number">10</span>,<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>bower 安装</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">bower install snabbt.js<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>npm 安装</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install snabbt.js<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>CDNs 地址</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javaScript">https:<span class="hljs-comment">//cdnjs.com/libraries/snabbt.js</span><br>http:<span class="hljs-comment">//www.jsdelivr.com/#!snabbt</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Odometer"><a href="#Odometer" class="headerlink" title="Odometer"></a><a target="_blank" rel="noopener" href="https://github.hubspot.com/odometer/">Odometer</a></h2><p><img src="/2020/11/20/css3Tools/odometer.png" alt="Odometer"></p>
+<p>Odometer是用来给数字作动效的，比如通过它你可以很好地呈现网站人数的增加，倒计时等与数字相关的动画效果。</p>
+<h2 id="Hover-css"><a href="#Hover-css" class="headerlink" title="Hover.css"></a><a target="_blank" rel="noopener" href="http://ianlunn.github.io/Hover/">Hover.css</a></h2><p><img src="/2020/11/20/css3Tools/hover.png" alt="hover"></p>
+<p>Hover.css提供了大量的Hover效果，包括2D变换，图标变换，背景变换等等。而且几乎可以应用于所有元素，包括链接，按钮，logo，SVG甚至图片等等。</p>
+<ul>
+<li>bower 安装</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">bower install hover.css --save<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>npm 安装</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hover --save<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>具体使用方式详见<a target="_blank" rel="noopener" href="https://github.com/IanLunn/Hover#downloadinstall">https://github.com/IanLunn/Hover#downloadinstall</a></li>
+</ul>
+<div id="paginator"></div></div><div id="post-footer"><hr><a href="/2020/11/20/linux-command/">linux常用命令 Next →</a><hr></div><div id="bottom-btn"><a id="to-index" href="#post-index" title="index">≡</a><a id="to-top" href="#post-title" title="to top">∧</a></div><details id="reward"><summary>打赏</summary><div id="alipay"><span>支付宝 | Alipay</span><br><img src="/img/Alipay.png"></div><div id="wechat"><span>微信 | WeChat</span><br><img src="/img/WeChat.png"></div></details><div id="Valine"></div><script>new Valine({
+ el: '#Valine'
+ , appId: 'VfeDa28uYE7JCwY3svsNUAtX-gzGzoHsz'
+ , appKey: 'KHAP6sqzLBJo9mbINB2jVk79'
+ , placeholder: '说点什么吧'
+})</script></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/5.png" alt="Logo"></a><h1 id="Dr"><a href="/"> Dr.jimmy.YIN</a></h1><section id="total"><a id="total-archives" href="/archives"><span class="total-title">Archives Total:</span><span class="total-number">5</span></a><div id="total-tags"><span class="total-title">Tags:</span><span class="total-number">8</span></div><div id="total-categories"><span class="total-title">Categories:</span><span class="total-number">3</span></div></section></div><div id="aside-block"><h1>INDEX</h1><div id="post-index"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Animate-css"><span class="toc-number">1.</span> <span class="toc-text">Animate.css</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bounce-js"><span class="toc-number">2.</span> <span class="toc-text">Bounce.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS3-Animation"><span class="toc-number">3.</span> <span class="toc-text">CSS3 Animation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AniJS"><span class="toc-number">4.</span> <span class="toc-text">AniJS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Single-Element-CSS-Spinners"><span class="toc-number">5.</span> <span class="toc-text">Single Element CSS Spinners</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Snabbt-js"><span class="toc-number">6.</span> <span class="toc-text">Snabbt.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Odometer"><span class="toc-number">7.</span> <span class="toc-text">Odometer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hover-css"><span class="toc-number">8.</span> <span class="toc-text">Hover.css</span></a></li></ol></div></div><footer><nobr><span class="text-title">©</span><span class="text-content">1970 to 2020</span></nobr><wbr><nobr><span class="text-title">Email</span><span class="text-content">jimmy_ysy@163.com</span></nobr><wbr><wbr><nobr>生如蝼蚁，当立鸿鹄之志哉</nobr><wbr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/arknights.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script></body></html>
