@@ -1,0 +1,275 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>git常用操作 | 易梦的技术生活</title><script src="https://cdn.bootcss.com/valine/1.4.4/Valine.min.js"></script><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><meta name="generator" content="Hexo 5.2.0"></head><body><header><nav><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a></nav></header><main><article><div id="post-bg"><div id="post-title"><div id="post-info"><span>date:<time datetime="2020-11-23T15:11:22.000Z" id="date"> 2020-11-23</time></span><br><span>updated:<time datetime="2020-11-23T09:34:51.192Z" id="updated"> 2020-11-23</time></span></div><h1>git常用操作</h1><hr></div><div id="post-content"><p><img src="/2020/11/23/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/%E5%B7%A5%E4%BD%9C%E5%8E%9F%E9%87%8C.png" alt="git工作原理"></p>
+<p><em>PS</em></p>
+<ul>
+<li>Workspace：工作区</li>
+<li>Index / Stage：暂存区</li>
+<li>Repository：仓库区（或本地仓库）</li>
+<li>Remote：远程仓库</li>
+</ul>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="git托管项目（新建-or-clone一个git项目）"><a href="#git托管项目（新建-or-clone一个git项目）" class="headerlink" title="git托管项目（新建 or clone一个git项目）"></a>git托管项目（新建 or clone一个git项目）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">mkdir gitdemo <span class="hljs-comment"># 在当前目录创建gitdemo目录</span><br><span class="hljs-built_in">cd</span> gitdemo<br><span class="hljs-built_in">pwd</span> <span class="hljs-comment"># 显示当前目录</span><br>git init <span class="hljs-comment"># 将当前目录设置为git管理的仓库</span><br>git init [projectName] <span class="hljs-comment"># 新建一个目录，将其初始化为Git代码库</span><br>or<br>git <span class="hljs-built_in">clone</span> [ssh/https]<br></code></pre></td></tr></table></figure>
+
+<h3 id="工作区-gt-gt-暂存区（add为添加文件rm为移除文件）"><a href="#工作区-gt-gt-暂存区（add为添加文件rm为移除文件）" class="headerlink" title="工作区&gt;&gt;暂存区（add为添加文件rm为移除文件）"></a>工作区&gt;&gt;暂存区（add为添加文件rm为移除文件）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add [fileName] <span class="hljs-comment">#  单个或多个文件</span><br>git add *.js <span class="hljs-comment">#  通配符</span><br>git add -u <span class="hljs-comment">#  提交被修改(modified)和被删除(deleted)文件，不包括新文件(new)</span><br>git add . <span class="hljs-comment">#  提交新文件(new)和被修改(modified)文件，不包括被删除(deleted)文件</span><br>git add -A <span class="hljs-comment">#  提交所有变化（是git add .和git add -u的结合，git add -all的简写</span><br>git rm [file1] [file2] <span class="hljs-comment">#  删除工作区文件，并且将这次删除放入暂存区</span><br>git rm --cached [fileName] <span class="hljs-comment">#  停止追踪指定文件，但该文件会保留在工作区</span><br>git mv [fileNameOld] [fileNameNew] <span class="hljs-comment">#  改名文件，并且将这个改名放入暂存区</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="暂存区-gt-gt-本地仓库"><a href="#暂存区-gt-gt-本地仓库" class="headerlink" title="暂存区&gt;&gt;本地仓库"></a>暂存区&gt;&gt;本地仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git commit -m ‘说明信息’  <span class="hljs-comment">#  提交</span><br>git commit -am ‘说明’    <span class="hljs-comment">#  git add . 和 git commit的简写（一次完成两个动作）</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="本地仓库-gt-gt-远程仓库"><a href="#本地仓库-gt-gt-远程仓库" class="headerlink" title="本地仓库&gt;&gt;远程仓库"></a>本地仓库&gt;&gt;远程仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git push ssh://git@dev.fanerge.com/gitdemo.git master <span class="hljs-comment"># 把本地仓库提交到远程仓库的master分支中</span><br>git push -u origin master <span class="hljs-comment"># 当前分支提交到远程 master 分支</span><br>git push <span class="hljs-comment"># 如果当前分支与远程分支存在追踪关系</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="远程仓库-gt-gt-本地仓库"><a href="#远程仓库-gt-gt-本地仓库" class="headerlink" title="远程仓库&gt;&gt;本地仓库"></a>远程仓库&gt;&gt;本地仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git fetch [远程主机名] [分支名]   <span class="hljs-comment">#  远程主机的版本库有了更新（Git术语叫做commit），需要将这些更新取回本地</span><br>git fetch origin master<br>git <span class="hljs-built_in">clone</span> [ssh/https]  <span class="hljs-comment">#  从远程主机克隆一个版本库</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="远程仓库-gt-gt-工作区-更详细的资料"><a href="#远程仓库-gt-gt-工作区-更详细的资料" class="headerlink" title="远程仓库&gt;&gt;工作区(更详细的资料)"></a>远程仓库&gt;&gt;工作区(更详细的资料)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git pull [远程主机名] [远程分支名]:[本地分支名] <span class="hljs-comment">#  远程主机某个分支的更新，再与本地的指定分支合并</span><br>git pull <span class="hljs-comment">#  当前分支只有一个追踪分支时可省略部分参数</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h2><h3 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">git branch     <span class="hljs-comment"># 查看本地所有分支（*表示当前分支）</span><br>git branch -v  <span class="hljs-comment"># 查看本地所有分支及最近一次提交信息</span><br>git branch -vv <span class="hljs-comment"># 查看本地所有分支及最近一次提交信息和远程追踪分支</span><br>git branch -r  <span class="hljs-comment"># 查看远程所有分支</span><br>git branch -a  <span class="hljs-comment"># 查看本地/远程所有分支</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout [branchName] <span class="hljs-comment"># 切换分支</span><br>git checkout - <span class="hljs-comment"># 切换到上一个分支</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs bash">git branch [branchName]      <span class="hljs-comment"># 新建一个分支（但仍然留在当前分支）</span><br>git checkout -b [branchName] <span class="hljs-comment"># 新建一个分支（并切换到该分支）</span><br>git branch [branchName] [commitId] <span class="hljs-comment"># 新建一个分支（并指向指定的commitId）</span><br>git branch --track [branchName] [remoteBranchName] <span class="hljs-comment">#新建一个分支（并指定与远程分支的追踪关系）</span><br><br><span class="hljs-comment"># 如：新建 test 分支，并指向远程的 orign/dev 分支</span><br>git branch --track <span class="hljs-built_in">test</span> origin/dev<br><br><span class="hljs-comment"># 新建远程分支（新建本地分支，推送的远程作为远程分支）</span><br>git branch [branchName]<br>git push origin [branchName]:[remoteBranchName]<br><br><span class="hljs-comment"># 还需要为新建本地分支和远程分支建立追踪关系</span><br><span class="hljs-comment"># 如：本地的 test 分支作为远程的 dev 分支</span><br>git push origin <span class="hljs-built_in">test</span>:dev<br><br><span class="hljs-comment"># 建立追踪关系（当前分支和远程分支）</span><br><span class="hljs-comment"># 作用：用来描述当前和远程分支的位置关系，在使用git pull 和 git push 的时候可以省略远程参数</span><br><br>git branch --track [branchName] [remoteBranchName] <span class="hljs-comment"># 新建一个分支（并指定与远程分支的追踪关系）</span><br>git branch –-set-upstream-to=origin/[branchName]<br><br><span class="hljs-comment"># 如：当前分支和远程 dev 分支建立追踪关系</span><br>git branch –-set-upstream-to=origin/dev<br></code></pre></td></tr></table></figure>
+
+<h3 id="合并分支（branchName合并到当前分支）"><a href="#合并分支（branchName合并到当前分支）" class="headerlink" title="合并分支（branchName合并到当前分支）"></a>合并分支（branchName合并到当前分支）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">git merge [branchName]<br>git rebase [branchName]<br><br><span class="hljs-comment"># PS：</span><br>git merge dev（当前分支为master）<br>会在 master 分支产生一个新的commit。<br>git rebase dev（当前分支为master）<br>会将master上的提交推至顶端。<br></code></pre></td></tr></table></figure>
+
+<h3 id="删除分支（本地）"><a href="#删除分支（本地）" class="headerlink" title="删除分支（本地）"></a>删除分支（本地）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git branch -d [branchName] <span class="hljs-comment"># 删除分支（本地）</span><br>git push origin --delete [branchName] <span class="hljs-comment"># 删除分支（远程）</span><br>git branch -dr [remoteBranchName] <span class="hljs-comment"># 删除分支（远程）</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h3><ul>
+<li><p>tag作用类似于里程碑，可以快速找到里程碑的代码。</p>
+</li>
+<li><p>查看所有tag</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git tag<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>新建tag在当前commit</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git tag [tagName]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>新建一个tag在指定commit</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git tag [tagName] [commitId]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>删除本地tag</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git tag -d [tagName]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>删除远程tag</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git push origin :refs/tags/[tagName]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>查看tag信息</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git show [tagName]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>向远程提交指定tag</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git push [remoteBranchName] [tagName]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>新建一个分支，指向某个tag</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout -b [branchName] [tagName]<br></code></pre></td></tr></table></figure>
+
+<h2 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h2><ul>
+<li>显示有变更的文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git status<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示当前分支的版本历史</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">log</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示当前分支的版本历史（包括commit发生变更的文件）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">log</span> –<span class="hljs-built_in">stat</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示当前分支的版本历史（通过关键词）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">log</span> -S [keyword]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示某个commit之后的所有变动，每个commit占据一行</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">log</span> [tagName] HEAD –pretty=format:%s<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示某个commit之后的所有变动，其”提交说明”必须符合搜索条件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">log</span> [tagName] HEAD –grep feature<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示某个文件的版本历史，包括文件改名</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">log</span> –follow [fileName]<br>git whatchanged [fileName]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示指定文件相关的每一次diff</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">log</span> -p [fileName]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示过去5次提交</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">log</span> -5 –pretty –oneline<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示所有提交过的用户，按提交次数排序</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git shortlog -sn<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示指定文件是什么人在什么时间修改过</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git blame [file]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示暂存区和工作区的差异</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git biff<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示暂存区和上一个commit的差异</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git diff –cached [fileName]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示工作区与当前分支最新commit之间的差异</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git diff HEAD<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示两次提交之间的差异</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git diff [first-branch]…[second-branch]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示今天你写了多少行代码</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git diff –shortstat “@&#123;0 day ago&#125;”<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示某次提交的元数据和内容变化</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git show [commitId]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示某次提交发生变化的文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git show –name-only [commitId]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示某次提交时，某个文件的内容</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git show [commitId]:[fileName]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示当前分支的最近几次提交</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git reflog<br></code></pre></td></tr></table></figure>
+
+<h3 id="远程同步"><a href="#远程同步" class="headerlink" title="远程同步"></a>远程同步</h3><ul>
+<li>下载远程仓库的所有变动</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git fetch [ssh/https]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示所有远程仓库（包括fetch和push地址）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote -v<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示某一远程仓库的信息</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote show [remoteRepositoryName]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>增加一个新的远程仓库，并命名</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote add [shortname] [url]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>取回远程仓库的变化，并与本地分支合并（merge）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git pull [remote] [remoteBranchName]<br>PS：remote 一般为 origin ，当建立追踪关系，可以git pull 省略两个参数<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>上传本地指定分支到远程仓库</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git push [remote] [branchName]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>强行推送当前分支到远程仓库，即使有冲突</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git push [remote] –force<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>推送所有分支到远程仓库</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git push [remote] –all<br></code></pre></td></tr></table></figure>
+
+<h3 id="撤销-恢复"><a href="#撤销-恢复" class="headerlink" title="撤销/恢复"></a>撤销/恢复</h3><ul>
+<li>撤销工作区修改（指定文件）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git chekout – [fileName]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>撤销工作区（所有文件）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout – .<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>暂存区–&gt;工作区（指定文件）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git reset HEAD [fileName] <span class="hljs-comment"># 撤销暂存区的修改</span><br>git checkout [fileName] <span class="hljs-comment"># 撤销工作区的修改</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>重置暂存区到上次提交commit（工作区不变）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git reset [fileName]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>重置暂存区、工作区到上次提交commit</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git reset –hard<br>git reset HEAD^ –hard <span class="hljs-comment"># 回到上一次commit</span><br>git reset HEAD^^ –hard <span class="hljs-comment"># 回到上一次的上一次commit</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>重置暂存区、当前分支指定commitId（工作区不变）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git reset [commitId]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>重置暂存区、工作区、当前分支为指定commitId</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git reset –hard [commitId]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>重置当前HEAD为指定commitId（暂存区、工作区不表）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git reset –keep [commitId]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>新建一个commitId，用来撤销指定commitId（后者的所有变化都将被前者抵消，并且应用到当前分支）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git revert [commitId]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>暂时将未提交的变化存于stash，后续再从stash中取出</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">git stash list <span class="hljs-comment"># 查看 stash 列表</span><br>git stash <span class="hljs-comment"># 保存当前暂未提交的修改</span><br>git stash apply <span class="hljs-comment"># 从stash中恢复，但不清除该stash</span><br>git stash drop <span class="hljs-comment"># 清除该stash</span><br>git stash pop <span class="hljs-comment"># 从stash中恢复并清除该stash</span><br>PS：一般用于停下手中活，处理更加紧急的任务，处理完任务后在回过头继续。<br>git stash pop = git stash apply + git stash drop<br></code></pre></td></tr></table></figure>
+<div id="paginator"></div></div><div id="post-footer"><hr><a href="/2020/11/20/css3Tools/">css3 常用特效库 Next →</a><hr></div><div id="bottom-btn"><a id="to-index" href="#post-index" title="index">≡</a><a id="to-top" href="#post-title" title="to top">∧</a></div><details id="reward"><summary>打赏</summary><div id="alipay"><span>支付宝 | Alipay</span><br><img src="/img/Alipay.png"></div><div id="wechat"><span>微信 | WeChat</span><br><img src="/img/WeChat.png"></div></details><div id="Valine"></div><script>new Valine({
+ el: '#Valine'
+ , appId: 'VfeDa28uYE7JCwY3svsNUAtX-gzGzoHsz'
+ , appKey: 'KHAP6sqzLBJo9mbINB2jVk79'
+ , placeholder: '说点什么吧'
+})</script></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/5.png" alt="Logo"></a><h1 id="Dr"><a href="/"> Dr.jimmy.YIN</a></h1><section id="total"><a id="total-archives" href="/archives"><span class="total-title">Archives Total:</span><span class="total-number">6</span></a><div id="total-tags"><span class="total-title">Tags:</span><span class="total-number">9</span></div><div id="total-categories"><span class="total-title">Categories:</span><span class="total-number">3</span></div></section></div><div id="aside-block"><h1>INDEX</h1><div id="post-index"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git%E6%89%98%E7%AE%A1%E9%A1%B9%E7%9B%AE%EF%BC%88%E6%96%B0%E5%BB%BA-or-clone%E4%B8%80%E4%B8%AAgit%E9%A1%B9%E7%9B%AE%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">git托管项目（新建 or clone一个git项目）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8C%BA-gt-gt-%E6%9A%82%E5%AD%98%E5%8C%BA%EF%BC%88add%E4%B8%BA%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6rm%E4%B8%BA%E7%A7%BB%E9%99%A4%E6%96%87%E4%BB%B6%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">工作区&gt;&gt;暂存区（add为添加文件rm为移除文件）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9A%82%E5%AD%98%E5%8C%BA-gt-gt-%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="toc-number">1.3.</span> <span class="toc-text">暂存区&gt;&gt;本地仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93-gt-gt-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-number">1.4.</span> <span class="toc-text">本地仓库&gt;&gt;远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93-gt-gt-%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="toc-number">1.5.</span> <span class="toc-text">远程仓库&gt;&gt;本地仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93-gt-gt-%E5%B7%A5%E4%BD%9C%E5%8C%BA-%E6%9B%B4%E8%AF%A6%E7%BB%86%E7%9A%84%E8%B5%84%E6%96%99"><span class="toc-number">1.6.</span> <span class="toc-text">远程仓库&gt;&gt;工作区(更详细的资料)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">分支操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%88%86%E6%94%AF"><span class="toc-number">2.1.</span> <span class="toc-text">查看分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="toc-number">2.2.</span> <span class="toc-text">切换分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E5%88%86%E6%94%AF"><span class="toc-number">2.3.</span> <span class="toc-text">新建分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%EF%BC%88branchName%E5%90%88%E5%B9%B6%E5%88%B0%E5%BD%93%E5%89%8D%E5%88%86%E6%94%AF%EF%BC%89"><span class="toc-number">2.4.</span> <span class="toc-text">合并分支（branchName合并到当前分支）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%88%86%E6%94%AF%EF%BC%88%E6%9C%AC%E5%9C%B0%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">删除分支（本地）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86"><span class="toc-number">2.6.</span> <span class="toc-text">标签管理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%BF%A1%E6%81%AF"><span class="toc-number">3.</span> <span class="toc-text">查看信息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="toc-number">3.1.</span> <span class="toc-text">远程同步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%92%A4%E9%94%80-%E6%81%A2%E5%A4%8D"><span class="toc-number">3.2.</span> <span class="toc-text">撤销&#x2F;恢复</span></a></li></ol></li></ol></div></div><footer><nobr><span class="text-title">©</span><span class="text-content">1970 to 2020</span></nobr><wbr><nobr><span class="text-title">Email</span><span class="text-content">jimmy_ysy@163.com</span></nobr><wbr><wbr><nobr>生如蝼蚁，当立鸿鹄之志哉</nobr><wbr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/arknights.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script></body></html>
