@@ -35,7 +35,7 @@ tags:
 ## 使用git
 
 - 接下来便可以使用git下载github或者码云上的开源项目了
-- 例如在github上查找到目标项目后  ，点击绿色的Code 按钮后  选择复制Https下面的地址路径. ![gitclone](gitclone.pong)
+- 例如在github上查找到目标项目后  ，点击绿色的Code 按钮后  选择复制Https下面的地址路径. ![gitclone](gitclone.png)
 - 在git bash客户端中执行
   
 ```bash
