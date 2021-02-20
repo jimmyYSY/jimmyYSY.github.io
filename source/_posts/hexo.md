@@ -54,7 +54,7 @@ hexo s
 ```
 
 稍等片刻后，命令行会显示运行成功，并运行于系统的 <http://localhost:4000/> 地址上。
-![运行成功](https://github.com/jimmyYSY/blogImgs/blob/master/hexo/hexoS.png?raw=true)
+![运行成功](hexoS.png)
 复制粘贴在浏览器访问即可。
 
 ## 配置blog主题

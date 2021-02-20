@@ -23,11 +23,11 @@ tags:
 * 登录至[GitHub](https://github.com/login)
 * 填入注册的账号及密码
 
-![github-login](https://github.com/jimmyYSY/blogImgs/blob/master/GitHub/github-login.png?raw=true)
+![github-login](github-login.png)
 
 * 新建[开源项目](https://github.com/new)
 
-![github-newRepository](https://github.com/jimmyYSY/blogImgs/blob/master/GitHub/github-newRepository.png?raw=true)
+![github-newRepository](github-newRepository.png)
 
 注：
   项目名称格式应为 用户名.github.io 格式
@@ -98,9 +98,9 @@ deploy:
 
 * 打开项目Settings选项
 * 勾选Template repository选项
-  ![github](https://github.com/jimmyYSY/blogImgs/blob/master/GitHub/github-settings0.png?raw=true)
+  ![github](github-settings0.png)
 * 下来至GitHub Pages部分 选择新建的分支 gh-pages 分支 点击 <kbd> save </kbd>保存即可
-  ![github](https://github.com/jimmyYSY/blogImgs/blob/master/GitHub/github-settings1.png?raw=true)
+  ![github](github-settings1.png)
 
 * 新建一个浏览器标签页，输入 你的用户名+.github.io 访问一下试试，可能会有三五分钟的网络延迟。
 
