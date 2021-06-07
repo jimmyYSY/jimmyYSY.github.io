@@ -1,7 +1,6 @@
 #!/bin/bash
 echo "开始执行发布程序"
 git pull
-git add .
 git status
 
 while true;do
