@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "开始执行发布程序"
 git pull
 git add .
