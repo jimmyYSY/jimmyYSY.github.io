@@ -20,6 +20,7 @@ git add .
 else
 git add -p
 fi
+git status
 read -p "请输入提交内容：" commit
 git commit -m $commit
 git push
