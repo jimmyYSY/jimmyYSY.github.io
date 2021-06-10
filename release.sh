@@ -12,13 +12,13 @@ git status
 #     break
 #     fi
 # done
-git add -p
-
+# git add -p
 read -p "是否提交全部内容：(y/n)" addAll
-if ( $addAll = 'y' )
+if [ "$addAll" = 'y' ]
 then
 git add .
-
+else
+git add -p
 fi
 read -p "请输入提交内容：" commit
 git commit -m $commit
